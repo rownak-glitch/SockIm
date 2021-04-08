@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="style.css" rel="stylesheet">
+    <title>SOCKIm</title>
+</head>
+<body>
+    <div class="header">
+    <a href ="index.html" class= "logo" >Instant messaging app</a>
+    </div>
+    <br>
+    <br>
+
+    <diV id="log"></diV>
+    <br>
+    <br>
+
+    <div id = "sendCtrls">
+    <input type="text" placeholder="Your message here" id = "text">
+    <button>Send </button>
+    </div>
+ 
+
+    <script>
+       var name = prompt('What is your name?');
+
+       var sock = new  WebSocket("ws://localhost:5001");
+       sock.onopen = function(){
+           sock.send(JSON.stringify({
+               type: 'name',
+               data: name
+
+           }))
+       }
+
+       var log = document.getElementById('log');
+       
+
+       sock.onmessage =function(event){
+        console.log(event);
+        var json =JSON.parse(event.data);
+        log.innerHTML += json.name + ": "+json.data+"<br>";
+
+       }
+
+       document.querySelector('button').onclick=function(){
+           var text = document.getElementById("text").value;
+           //sock.send(text);
+           sock.send(JSON.stringify({
+               type:"message",
+               data: text
+
+           }));
+           log.innerHTML +="You: "+ text + "<br>";
+       };
+    </script>
+</body>
+
+</html>

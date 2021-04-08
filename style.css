@@ -1,0 +1,41 @@
+div#log{
+    width: 750px;
+    height: 300px;
+    margin: 0 auto;
+    background-color: bisque;
+    border: 5px solid black ;
+    border-radius: 7px; 
+}
+div#sendCtrls{
+    width: 300px;
+    margin: 25px auto;
+}
+.header{
+    overflow: hidden;
+    background-color: #f1f1f1;
+    padding: 20px 10px;
+}
+.header a{
+    float: left;
+    color: black;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 4px;
+}
+.header a.logo {
+    font-size: 25px;
+    font-weight: bold;
+  }
+  .header a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+div#sendCtrls button{
+    padding: 10px 24px;
+    border-radius: 2px;
+    background-color: #008CBA;
+
+}
